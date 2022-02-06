@@ -1,0 +1,12 @@
+.author {
+    display: flex;
+    flex-direction: row;
+}
+
+.author-image {
+    width: 30%;
+}
+
+.author-info {
+    width: 70%;
+}
