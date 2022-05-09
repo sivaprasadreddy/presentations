@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SivaLabs - Template</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/night.css" id="theme">
+    <link rel="stylesheet" href="../dist/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+
+<body>
+<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+<div class="reveal">
+    <!-- Wrap all slides in a single "slides" class -->
+    <div class="slides">
+
+        <!-- ALL SLIDES GO HERE -->
+        <!-- Each section element contains an individual slide -->
+        <section>
+            <h1>Main Title</h1>
+            <p>Sub Title</p>
+            <div class="author">
+                <div class="author-image">
+                    <img data-src="/assets/images/siva-min.png" height="320" width="280">
+                </div>
+                <div class="author-info">
+                    <ul>
+                        <li>Name : <a href="http://sivalabs.in" target="_blank">Siva</a></li>
+                        <li>Blog : <a href="http://sivalabs.in" target="_blank">https://sivalabs.in</a></li>
+                        <li>GitHub : <a href="https://github.com/sivaprasadreddy" target="_blank">sivaprasadreddy</a>
+                        </li>
+                        <li>Twitter: <a href="https://twitter.com/sivalabs" target="_blank">@sivalabs</a></li>
+                        <li>YouTube: <a href="https://www.youtube.com/c/SivaLabs" target="_blank">SivaLabs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>This slide content appears at once</h2>
+            <ul>
+                <li>Point 1</li>
+                <li>Point 2</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Points appear one after another</h2>
+            <p>
+            <ul>
+                <p class="fragment">Point 1</p>
+                <p class="fragment">Point 2</p>
+            </ul>
+            </p>
+        </section>
+
+        <section>
+            <section>
+                <h2>Slide with sub-sections</h2>
+                <p class="fragment">Point 1</p>
+            </section>
+            <section>
+                <h3>Sub-Section</h3>
+                <h2>Fragment Styles</h2>
+                <p>There's different types of fragments, like:</p>
+                <p class="fragment grow">grow</p>
+                <p class="fragment shrink">shrink</p>
+                <p class="fragment fade-out">fade-out</p>
+                <ul>
+                    <li class="fragment highlight-blue">Point 1.1</li>
+                    <li class="fragment highlight-red">Point 1.2</li>
+                </ul>
+
+            </section>
+        </section>
+
+        <section data-auto-animate>
+            <h2 data-id="code-title">Pretty Code</h2>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+						import React, { useState } from 'react';
+
+						function Example() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    ...
+						  );
+						}
+					</code></pre>
+            <p>Code syntax highlighting courtesy of <a href="https://highlightjs.org/usage/">highlight.js</a>.</p>
+        </section>
+
+        <section id="transitions">
+            <h2>Transition Styles</h2>
+            <p>
+                You can select from different transitions, like: <br>
+                <a href="?transition=none#/transitions">None</a> -
+                <a href="?transition=fade#/transitions">Fade</a> -
+                <a href="?transition=slide#/transitions">Slide</a> -
+                <a href="?transition=convex#/transitions">Convex</a> -
+                <a href="?transition=concave#/transitions">Concave</a> -
+                <a href="?transition=zoom#/transitions">Zoom</a>
+            </p>
+        </section>
+
+        <section>
+            <h2>... and GIFs!</h2>
+            <img data-src="https://media.giphy.com/media/xT9KVluGDHZvOk0tdC/giphy.gif">
+        </section>
+    </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/zoom/zoom.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+<script src="../plugin/search/search.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+
+<script>
+    // Required, even if empty.
+    Reveal.initialize({
+        slideNumber: true,
+        history: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transitionSpeed: 'default', // default/fast/slow
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        //autoSlide: 5000,
+        plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+    });
+</script>
+</body>
+</html>

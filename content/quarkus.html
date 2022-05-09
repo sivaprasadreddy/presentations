@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SivaLabs - Quarkus</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/league.css" id="theme">
+    <link rel="stylesheet" href="../dist/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+
+<body>
+<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+<div class="reveal">
+    <!-- Wrap all slides in a single "slides" class -->
+    <div class="slides">
+
+        <!-- ALL SLIDES GO HERE -->
+        <!-- Each section element contains an individual slide -->
+        <section>
+            <h1>Quarkus</h1>
+            <p>Supersonic Subatomic Java</p>
+            <div class="author">
+                <div class="author-image">
+                    <img data-src="/assets/images/siva-min.png" height="320" width="280">
+                </div>
+                <div class="author-info">
+                    <ul>
+                        <li>Name : <a href="https://sivalabs.in" target="_blank">Siva</a></li>
+                        <li>Blog : <a href="https://sivalabs.in" target="_blank">https://sivalabs.in</a></li>
+                        <li>GitHub : <a href="https://github.com/sivaprasadreddy" target="_blank">sivaprasadreddy</a>
+                        </li>
+                        <li>Twitter: <a href="https://twitter.com/sivalabs" target="_blank">@sivalabs</a></li>
+                        <li>YouTube: <a href="https://www.youtube.com/c/SivaLabs" target="_blank">SivaLabs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <img data-src="/assets/images/quarkus_card.png"/>
+        </section>
+
+        <section>
+            <h2>What is Quarkus?</h2>
+            <p>
+            <ul>
+                <li class="fragment">JVM based framework</li>
+                <li class="fragment">Supports Reactive and Non-Reactive Programming models</li>
+                <li class="fragment">Built with "Containers First" mindset</li>
+                <li class="fragment">Kubernetes Native</li>
+                <li class="fragment">Developer Productivity Focused</li>
+            </ul>
+            </p>
+        </section>
+        <section>
+            <h3>Throwing a bunch of buzzwords..huh...</h3>
+            <img data-src="https://media.giphy.com/media/xT9KVluGDHZvOk0tdC/giphy.gif">
+        </section>
+        <section>
+            <bold>JavaScript/NodeJS devs looking at Java dev's excitement about Hot Reloading</bold>
+            <img data-src="https://c.tenor.com/VwUDYZ_Qn0kAAAAC/brahmi-king.gif">
+            <!--<img data-src="/assets/images/brahmi-aa-bokkale.jpeg">-->
+        </section>
+        <section>
+            <p>They configured no?</p>
+            <img data-src="https://c.tenor.com/9atv6D83Oj0AAAAC/ok-escape-bramhi.gif">
+        </section>
+
+    </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/zoom/zoom.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+<script src="../plugin/search/search.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+
+<script>
+    // Required, even if empty.
+    Reveal.initialize({
+        slideNumber: true,
+        history: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transitionSpeed: 'default', // default/fast/slow
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        //autoSlide: 5000,
+        plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+    });
+</script>
+</body>
+</html>
