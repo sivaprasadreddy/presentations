@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SivaLabs - SpringBoot Logging</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/league.css" id="theme">
+    <link rel="stylesheet" href="../dist/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+
+<body>
+<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+<div class="reveal">
+    <!-- Wrap all slides in a single "slides" class -->
+    <div class="slides">
+
+        <!-- ALL SLIDES GO HERE -->
+        <!-- Each section element contains an individual slide -->
+        <section>
+            <h2>SpringBoot Tips - Part 3</h2>
+            <h3>SpringBoot Logging</h3>
+            <div class="author">
+                <div class="author-image">
+                    <img data-src="/assets/images/siva-min.png" height="320" width="280">
+                </div>
+                <div class="author-info">
+                    <ul>
+                        <li>Name : <a href="https://sivalabs.in" target="_blank">Siva</a></li>
+                        <li>Blog : <a href="https://sivalabs.in" target="_blank">https://sivalabs.in</a></li>
+                        <li>GitHub : <a href="https://github.com/sivaprasadreddy" target="_blank">sivaprasadreddy</a>
+                        </li>
+                        <li>Twitter: <a href="https://twitter.com/sivalabs" target="_blank">@sivalabs</a></li>
+                        <li>YouTube: <a href="https://www.youtube.com/c/SivaLabs" target="_blank">SivaLabs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Agenda</h2>
+            <ul>
+                <li >A quick look at Logging before SpringBoot</li>
+                <li >SpringBoot Default Logging Support</li>
+                <li >Customising Logging Configuration</li>
+                <li >Profile specific logging configuration</li>
+                <li >Logging Best Practices</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Logging in Java</h2>
+            <ul>
+                <li >Java Util Logging</li>
+                <li >commons-logging</li>
+                <li >Log4j</li>
+                <li >Logback</li>
+                <li >Log4j2</li>
+                <li >JBoss Logging</li>
+                <li >SLF4J (A facade to other logging providers)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Good old days of Logging</h2>
+            <p>Logging with library specific configuration</p>
+            <pre data-id="code-animation">
+                <code class="hljs" data-trim data-line-numbers>
+                   private static Logger logger = Logger.getLogger(MyClass.class);
+                </code>
+            </pre>
+            <section data-auto-animate>
+                <p data-id="code-title">log4j.properties</p>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim data-line-numbers>
+                        log4j.rootLogger=INFO, stdout
+                        # Direct log messages to stdout
+                        log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+                        log4j.appender.stdout.Target=System.out
+                        log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+                        log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+                    </code>
+                </pre>
+            </section>
+            <section data-auto-animate>
+                <p data-id="code-title">log4j.xml</p>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim data-line-numbers>
+                        <script type="text/template">
+                        <log4j:configuration
+                                xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+                            <appender name="console" class="org.apache.log4j.ConsoleAppender">
+                                <layout class="org.apache.log4j.PatternLayout">
+                                    <param name="ConversionPattern"
+                                           value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+                                </layout>
+                            </appender>
+
+                            <root>
+                                <level value="DEBUG"/>
+                                <appender-ref ref="console"/>
+                            </root>
+
+                        </log4j:configuration>
+                        </script>
+                    </code>
+                </pre>
+            </section>
+            <section data-auto-animate>
+                <p data-id="code-title">logback.xml</p>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim data-line-numbers>
+                        <script type="text/template">
+                        <configuration>
+                              <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                                <encoder>
+                                  <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+                                </encoder>
+                              </appender>
+
+                              <root level="debug">
+                                <appender-ref ref="STDOUT" />
+                              </root>
+                        </configuration>
+                        </script>
+                    </code>
+                </pre>
+            </section>
+        </section>
+
+        <section>
+            <h2>SpringBoot Logging</h2>
+            <ul>
+                <li>Default Logging with SLF4J & Logback</li>
+                <li>Can switch to Log4J2</li>
+                <li>No need to create logging config (properties or XML) files</li>
+            </ul>
+        </section>
+        <section>
+            <h2>SpringBoot Logging Configuration</h2>
+            <p data-id="code-title">application.properties</p>
+            <pre data-id="code-animation">
+                    <code class="hljs" data-trim data-line-numbers>
+                        #Log Levels: TRACE > DEBUG > INFO > WARN > ERROR
+                        logging.level.root=INFO
+                        logging.level.org.springframework=WARN
+                        logging.level.org.hibernate=DEBUG
+                        # Log groups
+                        logging.group.sivalabs=com.sivalabs,org.sivalabs
+                        logging.level.sivalabs=DEBUG
+                        logging.pattern.console=%d{yyyy-MM-dd}-%t-%x-%-5p-%-10c:%m%n
+                        logging.file.name=myapp.log
+                    </code>
+                </pre>
+        </section>
+       <!-- <section>
+            <h4>... and you get all this <br/>without writing much code..<br/>huh!!!</h4>
+            <img data-src="https://media.giphy.com/media/xT9KVluGDHZvOk0tdC/giphy.gif">
+        </section>-->
+
+        <section>
+            <h4>SpringBoot Logback Extensions</h4>
+            <p data-id="code-title">logback-spring.xml</p>
+            <pre data-id="code-animation" class="stretch">
+                <code class="hljs" data-trim data-line-numbers>
+                    <script type="text/template">
+                    <configuration>
+                        <springProperty scope="context" name="customer" source="myapp.customer" defaultValue="demo"/>
+                        <springProperty scope="context" name="region" source="myapp.region" defaultValue="us-east-1"/>
+                        <property name="LOG_FILE" value="${customer}-${region}-myapp.log"/>
+
+                        <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+                        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+                        <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
+                        <springProfile name="local">
+                            <root level="INFO">
+                                <appender-ref ref="CONSOLE" />
+                            </root>
+                        </springProfile>
+
+                        <springProfile name="!local">
+                            <root level="INFO">
+                                <appender-ref ref="CONSOLE" />
+                                <appender-ref ref="FILE" />
+                            </root>
+                        </springProfile>
+
+                    </configuration>
+                    </script>
+                </code>
+            </pre>
+        </section>
+
+        <section>
+            <h2>Logging Best Practices</h2>
+            <ul>
+                <li>Use <span class="fragment highlight-red">CorrelationID / TrackingID</span> with MDC</li>
+                <li>Don’t log <span class="fragment highlight-red">sensitive data</span></li>
+                <li>Check for <span class="fragment highlight-red">isDebugEnabled() / isTraceEnabled()</span></li>
+                <li>Structured Logging (JSON)</li>
+                <li>Distributed Tracing - Spring Cloud Sleuth</li>
+                <li>ELK/EFK Stack</li>
+            </ul>
+        </section>
+
+    </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/zoom/zoom.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+<script src="../plugin/search/search.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+
+<script>
+    // Required, even if empty.
+    Reveal.initialize({
+        center: false,
+        slideNumber: true,
+        history: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transitionSpeed: 'default', // default/fast/slow
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        //autoSlide: 5000,
+        plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+    });
+</script>
+</body>
+</html>
