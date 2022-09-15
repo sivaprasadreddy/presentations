@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SivaLabs - SpringBoot Kubernetes Tutorial</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/league.css" id="theme">
+    <link rel="stylesheet" href="../dist/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+
+<body>
+<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+<div class="reveal">
+    <!-- Wrap all slides in a single "slides" class -->
+    <div class="slides">
+
+        <!-- ALL SLIDES GO HERE -->
+        <!-- Each section element contains an individual slide -->
+        <section>
+            <h2>SpringBoot Kubernetes Tutorial Series</h2>
+
+            <div class="author">
+                <div class="author-image">
+                    <img data-src="../assets/images/siva-min.png" height="320" width="280">
+                </div>
+                <div class="author-info">
+                    <ul>
+                        <li>Name : <a href="https://sivalabs.in" target="_blank">Siva</a></li>
+                        <li>Blog : <a href="https://sivalabs.in" target="_blank">https://sivalabs.in</a></li>
+                        <li>GitHub : <a href="https://github.com/sivaprasadreddy" target="_blank">sivaprasadreddy</a>
+                        </li>
+                        <li>Twitter: <a href="https://twitter.com/sivalabs" target="_blank">@sivalabs</a></li>
+                        <li>YouTube: <a href="https://www.youtube.com/c/SivaLabs" target="_blank">SivaLabs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 1-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-1.png" >
+        </section>
+        <section>
+            <h2>Goal</h2>
+            <ol>
+                <li>Build REST API using SpringBoot</li>
+                <li>Build UI using ReactJS</li>
+                <li>Run app locally using docker-compose</li>
+                <li>Deploy app on Kubernetes (kind) Cluster</li>
+            </ol>
+        </section>
+        <section>
+            <h2>What we are going to learn?</h2>
+            <section>
+                <h3>Backend</h3>
+                <ul>
+                    <li>Build REST API using Java 17, SpringBoot, Postgresql, Maven</li>
+                    <li>Spring Data JPA</li>
+                    <li>Flyway DB Migration</li>
+                    <li>Swagger Documentation</li>
+                    <li>Integration Testing using Testcontainers</li>
+                    <li>GitHub Actions CI/CD</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Frontend</h3>
+                <ul>
+                    <li>Build UI using ReactJS/NextJS</li>
+                    <li>Bootstrap CSS</li>
+                    <li>Axios for API communication</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Docker and Kubernetes</h3>
+                <ul>
+                    <li>Dockerizing the application using Buildpacks and Jib</li>
+                    <li>Dev env setup using docker-compose</li>
+                    <li>Kubernetes - Pods, ReplicaSet, Deployment, Service, Ingress</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Deployment</h3>
+                <ul>
+                    <li>Setting up Kubernetes (kind) Cluster</li>
+                    <li>Deploy app on Kubernetes</li>
+                    <li>Using Lens as K8s GUI</li>
+                </ul>
+            </section>
+        </section>
+        <!-- ===================== End Part 1 =====================-->
+
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 2-->
+        <section >
+
+            <img data-src="../assets/images/sb-k8s-part-2.png" >
+        </section>
+        <section>
+            <h2>Approach</h2>
+            <img data-src="../assets/images/springboot-k8s-series-bookmarker-components.drawio.png">
+            <ol>
+                <li>Build REST API using SpringBoot</li>
+                <li>Build UI using NextJS</li>
+                <li>Deploy app on Kubernetes (kind) Cluster</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Software/Tools Setup</h2>
+            <ul>
+                <li>Install JDK using <a href="https://sdkman.io/">SDKMAN</a></li>
+                <li>Install <a target="_blank" href="https://nodejs.org/">NodeJS</a></li>
+                <li>Install <a target="_blank" href="https://docs.docker.com/engine/install/">Docker and DockerCompose</a></li>
+                <li>Install <a target="_blank" href="https://kubernetes.io/docs/tasks/tools/">Kubectl</a></li>
+                <li>Install <a target="_blank" href="https://kind.sigs.k8s.io/docs/user/quick-start/">Kind</a></li>
+                <li>Install <a target="_blank" href="https://k8slens.dev/">Lens</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Project Setup</h2>
+            <ul>
+                <li>Create <a target="_blank" href="https://github.com/sivaprasadreddy/springboot-kubernetes-youtube-series">GitHub Repo</a></li>
+                <li>Generate <a target="_blank" href="https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.7.0&packaging=jar&jvmVersion=17&groupId=com.sivalabs&artifactId=bookmarker-api&name=bookmarker-api&description=Demo%20project%20for%20Spring%20Boot&packageName=com.sivalabs.bookmarker&dependencies=devtools,lombok,configuration-processor,web,actuator,testcontainers,data-jpa,flyway,h2,postgresql,validation">SpringBoot API</a></li>
+            </ul>
+        </section>
+        <!-- ===================== End Part 2 =====================-->
+
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 3-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-3.png" >
+        </section>
+        <section>
+            <h2>Get Bookmarks API with Pagination</h2>
+            <ol>
+                <li>Create JPA Entity for Bookmark</li>
+                <li>Create Spring Data JPA Repository</li>
+                <li>Create BookmarkService</li>
+                <li>Create Get Bookmarks API endpoint</li>
+                <li>Add "pagination" support</li>
+            </ol>
+        </section>
+        <!-- ===================== End Part 3 =====================-->
+
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 4-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-4.png" >
+        </section>
+        <section>
+            <h2>Database Migrations</h2>
+            <ol>
+                <li>Flyway</li>
+                <li>Liquibase</li>
+            </ol>
+        </section>
+        <!-- ===================== End Part 4 =====================-->
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 5-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-5.png" >
+        </section>
+        <section>
+            <h2>Spring Data Jpa Projections</h2>
+            <ol>
+                <li>Load ONLY desired data(columns)</li>
+                <li>Optimized for read-only scenarios</li>
+                <li>Interface-based Projections</li>
+                <li>Class-based Projections</li>
+            </ol>
+        </section>
+        <!-- ===================== End Part 5 =====================-->
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 5-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-6.png" >
+        </section>
+        <!-- ===================== End Part 6 =====================-->
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 7-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-7.png" >
+        </section>
+        <section>
+            <h3>How to create Docker Image for SpringBoot app?</h3>
+            <ol>
+                <li>Dockerfile using fat-jar</li>
+                <li>Multistage Dockerfile with layers</li>
+                <li>SpringBoot Maven/Gradle Plugin using Buildpacks</li>
+                <li>Jib Maven/Gradle Plugin</li>
+            </ol>
+        </section>
+        <!-- ===================== End Part 7 =====================-->
+
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 8-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-8.png" >
+        </section>
+        <section>
+            <h3>Continuous Integration</h3>
+            <ol>
+                <li>Run Tests</li>
+                <li>Code Quality Checks(SonarQube, CheckStyle etc)</li>
+                <li>Deploy to Dev/QA Env</li>
+                <li>Run E2E Tests(Selenium, Cypress etc)</li>
+                <li>Deploy to Performance Test Env</li>
+                <li>Run Performance Tests using Gatling/JMeter</li>
+                <li>Deploy to Production</li>
+                <li>Run Smoke/Sanity Tests</li>
+            </ol>
+        </section>
+        <!-- ===================== End Part 8 =====================-->
+
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 9-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-9.png" >
+        </section>
+        <section data-auto-animate>
+            <h2 data-id="code-title">REST API Guidelines</h2>
+            <pre data-id="code-animation">
+                <code class="hljs" data-trim data-line-numbers>
+                GET     /api/bookmarks                 <- get all
+                GET     /api/bookmarks/{id}            <- get by id
+                GET     /api/bookmarks?query=k&page=2  <- search
+                POST    /api/bookmarks                 <- create
+                PUT     /api/bookmarks/{id}            <- replace by id
+                PATCH   /api/bookmarks/{id}            <- partial update by id
+                DELETE  /api/bookmarks/{id}            <- delete by id
+                </code>
+            </pre>
+        </section>
+        <!-- ===================== End Part 9 =====================-->
+
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 10-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-10.png" >
+        </section>
+        <section data-auto-animate>
+            <h2 data-id="code-title">Create Bookmark API</h2>
+            <pre data-id="code-animation">
+                <code class="hljs" data-trim>
+                POST    /api/bookmarks
+
+                Request Payload:
+                {
+                   "title": "SivaLabs Blog",
+                   "url": "https://sivalabs.in"
+                }
+
+                Response StatusCode: 201
+                Payload:
+                {
+                   "id": 1,
+                   "title": "SivaLabs Blog",
+                   "url": "https://sivalabs.in"
+                }
+                </code>
+            </pre>
+        </section>
+        <!-- ===================== End Part 10 =====================-->
+
+        <!-- SpringBoot Kubernetes Tutorial Series - Part 11-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-11.png" >
+        </section>
+        <section data-auto-animate>
+            <h4 data-id="code-title">Better Developer Experience</h4>
+            <pre data-id="code-animation">
+                <code class="hljs" data-trim>
+                    $ git clone https://github.com/sivaprasadreddy/myapp.git
+                    $ cd myapp
+                    $ docker-compose up -d
+                    $ docker-compose logs -f
+                </code>
+            </pre>
+            <div class="fragment">
+                <h4 data-id="code-title">One Step further</h4>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim>
+                        $ cd myapp
+                        $ ./run.sh start
+                        $ ./run.sh stop
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <!-- ===================== End Part 11 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-12.png" >
+        </section>
+        <!-- ===================== End Part 12 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-13.png" >
+        </section>
+        <!-- ===================== End Part 13 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-14.png" >
+        </section>
+        <!-- ===================== End Part 14 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-15.png" >
+        </section>
+        <!-- ===================== End Part 15 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-16.png" >
+        </section>
+        <!-- ===================== End Part 16 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-17.png" >
+        </section>
+        <!-- ===================== End Part 17 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-18.png" >
+        </section>
+        <!-- ===================== End Part 18 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-19.png" >
+        </section>
+        <section>
+            <section>
+                <h3>What is Docker?</h3>
+                <blockquote>
+                    Docker is a containerization technology to package and distribute applications.
+                </blockquote>
+            </section>
+            <section>
+                <h3>What problems Docker trying to solve?</h3>
+                <blockquote>
+                    The infamous <br/>"It works on my machine" <br/>problem
+                </blockquote>
+            </section>
+            <section>
+                <h3>How to build a Docker Image?</h3>
+                <p>Example Dockerfile</p>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim>
+                        FROM eclipse-temurin:17-jre-focal
+                        COPY target/myapp-1.0.0.jar /apps/myapp.jar
+                        EXPOSE 8080
+                        ENTRYPOINT ["java","-jar","/apps/myapp.jar"]
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h3>Docker Image and Container</h3>
+                <blockquote>
+                    If Docker Image is a "class" then "container" is an instance of that class.
+                </blockquote>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim>
+                        # Create Docker Image
+                        $ docker build -t username/myapp .
+
+                        # Create 1st container
+                        $ docker run --name app1 -p 8081:8080 -d username/myapp
+
+                        # Create 2nd container
+                        $ docker run --name app2 -p 8082:8080 -d username/myapp
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h3>Docker Volumes</h3>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim>
+                        # Creating volume and mount it to container
+                        docker volume create my-vol
+                        docker run -d -v my-vol:/app nginx:latest
+
+                        # Bind a host file system path to container
+                        docker run -d -v /some/host/dir/path:/app nginx:latest
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h3>Docker Image Registry</h3>
+                <ul>
+                    <li>DockerHub</li>
+                    <li>Quay.io</li>
+                    <li>Amazon ECR (Elastic Container Registry)</li>
+                    <li>Google Container Registry</li>
+                    <li>Azure Container Registry</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Docker Compose</h3>
+                <p>Run multiple Docker containers</p>
+                <pre data-id="code-animation">
+                    <code class="hljs" data-trim>
+                        version: "3.9"
+                        services:
+                          myapp:
+                            image: my_web_app:latest
+                            depends_on:
+                              - db
+                              - cache
+                          db:
+                            image: postgres:latest
+
+                          cache:
+                            image: redis:latest
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>What is Kubernetes?</h3>
+                <blockquote>
+                    Kubernetes is a container orchestration platform.
+                </blockquote>
+            </section>
+            <section>
+                <h3>Kubernetes Architecture</h3>
+                <img data-src="../assets/images/k8s-arch.svg" >
+            </section>
+            <section>
+                <h3>Kubernetes Key Object Types</h3>
+                <ul>
+                    <li>Pods</li>
+                    <li>ReplicaSets</li>
+                    <li>Deployments</li>
+                    <li>Services</li>
+                    <li>ConfigMaps</li>
+                    <li>Secrets</li>
+                    <li>PersistentVolumes</li>
+                    <li>PersistentVolumeClaims</li>
+                    <li>Ingress Controller</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Kubernetes Cluster Installation</h3>
+                <ul>
+                    <li>Cloud (AWS, GCP, Azure, Digital Ocean etc)</li>
+                    <li>Local Development (KinD, Minikube, K3s etc)</li>
+                </ul>
+            </section>
+            <section>
+                <h3>KinD Cluster Installation</h3>
+                <p>Reference: <a target="_blank" href="https://kind.sigs.k8s.io/">Kind Docs</a></p>
+            </section>
+            <section>
+                <h3>Lens (Kubernetes GUI Tool) Installation</h3>
+                <p>Reference: <a target="_blank" href="https://k8slens.dev/">K8S Lens</a></p>
+            </section>
+
+        </section>
+        <!-- ===================== End Part 19 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-20.png" >
+        </section>
+        <!-- ===================== End Part 20 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-21.png" >
+        </section>
+        <!-- ===================== End Part 21 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-22.png" >
+        </section>
+        <!-- ===================== End Part 22 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-23.png" >
+        </section>
+        <!-- ===================== End Part 23 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-24.png" >
+        </section>
+        <!-- ===================== End Part 24 =====================-->
+        <section >
+            <img data-src="../assets/images/sb-k8s-part-25.png" >
+        </section>
+        <!-- ===================== End Part 25 =====================-->
+    </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/zoom/zoom.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+<script src="../plugin/search/search.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+
+<script>
+    // Required, even if empty.
+    Reveal.initialize({
+        center: true,
+        slideNumber: true,
+        history: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transitionSpeed: 'default', // default/fast/slow
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        //autoSlide: 5000,
+        plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+    });
+</script>
+</body>
+</html>
