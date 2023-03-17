@@ -27,3 +27,8 @@
 .part50 {
     width: 50%;
 }
+
+.title {
+    font-size: 80px;
+    font-weight: bolder !important;
+}
