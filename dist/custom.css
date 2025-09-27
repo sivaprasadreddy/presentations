@@ -32,3 +32,14 @@
     font-size: 80px;
     font-weight: bolder !important;
 }
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+    text-transform: none;
+}
+
+.big-text {
+    font-size: 55px;
+    font-weight: bolder;
+}

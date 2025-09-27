@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SivaLabs - Quarkus</title>
+    <title>JetBrains Screencasts</title>
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -11,11 +11,14 @@
 
     <link rel="stylesheet" href="../dist/reset.css">
     <link rel="stylesheet" href="../dist/reveal.css">
-    <link rel="stylesheet" href="../dist/theme/league.css" id="theme">
+    <link rel="stylesheet" href="../dist/theme/sky.css" id="theme">
     <link rel="stylesheet" href="../dist/custom.css">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -26,9 +29,9 @@
 
         <!-- ALL SLIDES GO HERE -->
         <!-- Each section element contains an individual slide -->
-        <section>
-            <h1>Quarkus</h1>
-            <p>Supersonic Subatomic Java</p>
+        <!--<section>
+            <h2>SpringBoot Tips - Part 3</h2>
+            <h3>SpringBoot Logging</h3>
             <div class="author">
                 <div class="author-image">
                     <img data-src="../assets/images/siva-min.png" height="320" width="280">
@@ -44,66 +47,11 @@
                     </ul>
                 </div>
             </div>
-        </section>
+        </section>-->
         <section>
-            <img data-src="/assets/images/Quarkus-logo_0.jpg"/>
+            <h3>Debugging Database Transactions?</h3>
+            <h3>Let <strong>Spring Debugger</strong> Do the Heavy Lifting</h3>
         </section>
-        <section>
-            <img data-src="/assets/images/quarkus_card.png"/>
-        </section>
-        <section>
-            <h2>Quarkus 🚀</h2>
-            <ul>
-                <li>🔥 Live Reloading</li>
-                <li>⚡️ Dev Services</li>
-                <li>😍 Dev UI</li>
-                <li>🌀 Active Record & Repository Patterns</li>
-                <li>🪵 Simplified Logging</li>
-                <li>🌡️ Info, Health Endpoints</li>
-                <li>📃 Open API Swagger Docs</li>
-                <li>🧭 Monitoring with Micrometer & LGTM</li>
-            </ul>
-        </section>
-        <section>
-            <h2>What is Quarkus?</h2>
-            <p>
-            <ul>
-                <li >JVM based framework</li>
-                <li >Supports Reactive and Non-Reactive Programming models</li>
-                <li >Built with "Containers First" mindset</li>
-                <li >Kubernetes Native</li>
-                <li >Developer Productivity Focused</li>
-            </ul>
-            </p>
-        </section>
-        <section>
-            <h3>Throwing a bunch of buzzwords..huh...</h3>
-            <img data-src="https://media.giphy.com/media/xT9KVluGDHZvOk0tdC/giphy.gif">
-        </section>
-        <section>
-            <h2>Quarkus Crash Course</h2>
-            <ul>
-                <li>Build REST API</li>
-                <li>Hibernate ORM with Panache (Active Record & Repository Patterns)</li>
-                <li>Hot Reloading</li>
-                <li>Dev Services & Dev UI</li>
-                <li>Application Configuration</li>
-                <li>Simplified Logging</li>
-                <li>Info, Health Endpoints</li>
-                <li>Open API Swagger Docs</li>
-                <li>Monitoring with Micrometer, Prometheus & LGTM</li>
-            </ul>
-        </section>
-        <section>
-            <bold>JavaScript/NodeJS devs looking at Java dev's excitement about Hot Reloading</bold>
-            <img data-src="https://c.tenor.com/VwUDYZ_Qn0kAAAAC/brahmi-king.gif">
-            <!--<img data-src="/assets/images/brahmi-aa-bokkale.jpeg">-->
-        </section>
-        <section>
-            <p>They configured no?</p>
-            <img data-src="https://c.tenor.com/9atv6D83Oj0AAAAC/ok-escape-bramhi.gif">
-        </section>
-
     </div>
 </div>
 
@@ -117,6 +65,7 @@
 <script>
     // Required, even if empty.
     Reveal.initialize({
+        center: true,
         slideNumber: true,
         history: true,
         transition: 'slide', // none/fade/slide/convex/concave/zoom
