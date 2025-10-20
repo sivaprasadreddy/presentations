@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SivaLabs - SpringBoot Logging</title>
+    <title>SivaLabs - SpringBoot Tips</title>
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -26,9 +26,9 @@
 
         <!-- ALL SLIDES GO HERE -->
         <!-- Each section element contains an individual slide -->
-        <!--<section>
-            <h2>SpringBoot Tips - Part 3</h2>
-            <h3>SpringBoot Logging</h3>
+        <section>
+            <h2>SpringBoot Tips - Part 2</h2>
+            <h3>Managing Application Configuration <br/>in the Right Way!</h3>
             <div class="author">
                 <div class="author-image">
                     <img data-src="../assets/images/siva-min.png" height="320" width="280">
@@ -44,7 +44,18 @@
                     </ul>
                 </div>
             </div>
-        </section>-->
+        </section>
+
+        <section>
+            <h2>SpringBoot Configuration Options <br/> (Enough for most cases)</h2>
+            <ol>
+                <li>Default values <br/>Ex: application.properties </li>
+                <li>Profile specific overrides <br/>Ex: application-{profile}.properties</li>
+                <li>Environment Variables <br/>Ex: SERVER_PORT=9090</li>
+            </ol>
+        </section>
+
+        <!-- SpringBoot-Tips-Logging -->
         <section>
             <!--<h2>SivaLabs - SpringBoot Tips Series - Part 3</h2>-->
             <img data-src="../assets/images/SpringBoot-Tips-Logging.png" >
@@ -164,10 +175,10 @@
                     </code>
                 </pre>
         </section>
-       <!-- <section>
-            <h4>... and you get all this <br/>without writing much code..<br/>huh!!!</h4>
-            <img data-src="https://media.giphy.com/media/xT9KVluGDHZvOk0tdC/giphy.gif">
-        </section>-->
+        <!-- <section>
+             <h4>... and you get all this <br/>without writing much code..<br/>huh!!!</h4>
+             <img data-src="https://media.giphy.com/media/xT9KVluGDHZvOk0tdC/giphy.gif">
+         </section>-->
 
         <section>
             <h4>SpringBoot Logback Extensions</h4>
@@ -215,6 +226,155 @@
             </ul>
         </section>
 
+        <!-- SpringBoot-Tips-Testing -->
+        <section>
+            <!--<h2>SivaLabs - SpringBoot Tips Series - Part 3</h2>-->
+            <img data-src="../assets/images/SpringBoot-Tips-Testing.png" >
+        </section>
+        <section>
+            <section>
+                <h2>Types of Tests</h2>
+                <ul>
+                    <li >Unit Tests</li>
+                    <li >Integration Tests</li>
+                    <li >E2E Tests</li>
+                    <li >Performance Tests</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Unit Tests</h2>
+                <ul>
+                    <li>Test business logic</li>
+                    <li>Identify your Unit</li>
+                    <li>Mockist vs Classical testing strategy</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Unit Tests that doesn't need framework support</h2>
+                <ul>
+                    <li>No Mocks (Preferred)</li>
+                    <li>Mockito</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Slice Tests</h2>
+                <h3>Unit Tests that need framework support</h3>
+                <ul>
+                    <li>@WebMvcTest</li>
+                    <li>@DataJpaTest</li>
+                    <li>@DataJdbcTest</li>
+                    <li>@DataMongoTest</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Integration Tests</h2>
+                <ul>
+                    <li>@SpringBootTest</li>
+                    <li>Custom Slices</li>
+                </ul>
+
+            </section>
+
+        </section>
+        <!-- SpringBoot-Tips-Testcontainers -->
+        <section>
+            <!--<h2>SpringBoot Tips Series - Part 5</h2>-->
+            <img data-src="../assets/images/SpringBoot-Tips-Testcontainers.png" >
+        </section>
+        <!-- SpringBoot-Tips-exception-handling -->
+        <section >
+            <!--<h2>SpringBoot Tips Series - Part 6</h2>-->
+            <img data-src="../assets/images/SpringBoot-Tips-ExceptionHandling.png" >
+        </section>
+        <section>
+            <section>
+                <h2>Exception Handling</h2>
+                <ul>
+                    <li >Traditional Web Applications</li>
+                    <li >REST APIs</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Exception Handling In SpringBoot REST APIs</h2>
+                <ul>
+                    <li >Using try-catch</li>
+                    <li >Using @ExceptionHandler at Controller level</li>
+                    <li >Using @ControllerAdvice at global level</li>
+                </ul>
+            </section>
+        </section>
+        <!-- SpringBoot-Tips-exception-handling-rest-apis-psw -->
+        <section >
+            <!--<h2>SpringBoot Tips Series - Part 6</h2>-->
+            <img data-src="../assets/images/SpringBoot-Tips-ExceptionHandling-REST-PSW.png" >
+        </section>
+        <section>
+            <h2>Problem Spring Web Starter</h2>
+            <pre data-id="code-animation">
+                <code class="hljs" data-trim data-line-numbers>
+                    <dependency>
+                        <groupId>org.zalando</groupId>
+                        <artifactId>problem-spring-web-starter</artifactId>
+                        <version>${problem-spring-web.version}</version>
+                    </dependency>
+                </code>
+            </pre>
+        </section>
+        <!-- SpringBoot-Tips-actuator -->
+        <section >
+            <!--<h2>SpringBoot Tips Series - Part 6</h2>-->
+            <img data-src="../assets/images/SpringBoot-Tips-Actuator.png" >
+        </section>
+        <section>
+            <h2>Spring Boot Actuator</h2>
+            <pre data-id="code-animation">
+                <code class="hljs" data-trim data-line-numbers>
+                    <dependency>
+                        <groupId>org.zalando</groupId>
+                        <artifactId>problem-spring-web-starter</artifactId>
+                        <version>${problem-spring-web.version}</version>
+                    </dependency>
+                </code>
+            </pre>
+        </section>
+
+        <!-- SpringBoot-Tips-SpringBoot Admin -->
+        <section >
+            <!--<h2>SpringBoot Tips Series - Part 6</h2>-->
+            <img data-src="../assets/images/SpringBoot-Tips-SpringBootAdmin.png" >
+        </section>
+        <section>
+            <h2>Spring Boot Admin</h2>
+            <ul>
+                <li>Show health status</li>
+                <li>Show details, like
+                    <ul>
+                        <li>JVM & memory metrics</li>
+                        <li>micrometer.io metrics</li>
+                        <li>Datasource metrics</li>
+                        <li>Cache metrics</li>
+                    </ul>
+                </li>
+                <li>View Spring Boot Configuration Properties</li>
+                <li>Easy loglevel management</li>
+                <li>and, many more....</li>
+            </ul>
+        </section>
+        <!-- SpringBoot-Tips-SpringBoot REST API Documentation -->
+        <section >
+            <!--<h2>SpringBoot Tips Series - Part 6</h2>-->
+            <img data-src="../assets/images/SpringBoot-Tips-Swagger.png" >
+        </section>
+        <section>
+            <h2>Spring Boot REST API documentation</h2>
+            <h4>using springdoc-openapi</h4>
+        </section>
+        <!-- SpringBoot-Tips- -->
+        <!-- SpringBoot-Tips- -->
     </div>
 </div>
 
@@ -228,7 +388,6 @@
 <script>
     // Required, even if empty.
     Reveal.initialize({
-        center: false,
         slideNumber: true,
         history: true,
         transition: 'slide', // none/fade/slide/convex/concave/zoom
